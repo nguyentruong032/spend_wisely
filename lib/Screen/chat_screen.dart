@@ -290,7 +290,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ),
 
-            // 4. Danh sách các cuộc hội thoại cũ
+            // 4. Danh sách các cuộc hội thoại cũ (SỬA Ở ĐÂY: Thêm icon delete)
             Expanded(
               child: _conversations.isEmpty
                   ? Center(
@@ -329,7 +329,9 @@ class _ChatScreenState extends State<ChatScreen> {
                             ),
                           ),
                           onTap: () {
-                            Navigator.pop(context);
+                            Navigator.pop(
+                              context,
+                            ); // Đóng Drawer trước khi load
                             if (!isSelected) {
                               setState(() {
                                 _currentConversationId = conv.conversationId;
@@ -342,7 +344,20 @@ class _ChatScreenState extends State<ChatScreen> {
                                   Icons.arrow_right,
                                   color: Color(0xFF1976D2),
                                 )
-                              : null,
+                              : IconButton(
+                                  // THÊM: Icon delete nếu không selected
+                                  icon: Icon(
+                                    Icons.delete_outline,
+                                    color: Colors.red[600],
+                                    size: 20,
+                                  ),
+                                  onPressed: () {
+                                    Navigator.pop(context); // Đóng Drawer
+                                    _confirmDeleteConversation(
+                                      conv,
+                                    ); // Gọi confirm xóa single
+                                  },
+                                ),
                         );
                       },
                     ),
@@ -445,30 +460,57 @@ class _ChatScreenState extends State<ChatScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.chat_bubble_outline, size: 80, color: Colors.grey),
-          SizedBox(height: 20),
-          Text(
-            "Bắt đầu cuộc hội thoại mới",
-            style: TextStyle(fontSize: 18, color: Colors.grey),
+          Icon(
+            Icons.chat_bubble_outline_rounded,
+            size: 90,
+            color: Colors.blue.shade300,
           ),
+          const SizedBox(height: 24),
+          Text(
+            "Chào bạn! Bạn muốn hỏi gì hôm nay?",
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: Colors.black87,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            "Dưới đây là một số gợi ý phổ biến:",
+            style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
+          ),
+          const SizedBox(height: 20),
+          _buildSuggestedQuestions(), // ← Thêm dòng này
         ],
       ),
     );
   }
 
   Widget _buildSuggestedQuestions() {
-    final suggestions = GroqService.getSuggestedQuestions();
+    final suggestions = [
+      "Lời khuyên đầu tư an toàn 2026",
+      "Ngân sách du lịch 10 triệu nên chia thế nào?",
+    ];
     return Container(
-      height: 100,
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      height: 125,
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: suggestions.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.only(right: 8.0, bottom: 20),
+            padding: const EdgeInsets.only(right: 10, bottom: 12),
             child: ActionChip(
-              label: Text(suggestions[index], style: TextStyle(fontSize: 12)),
+              elevation: 2,
+              backgroundColor: Colors.white,
+              side: BorderSide(color: Colors.blue.shade100),
+              label: Text(
+                suggestions[index],
+                style: const TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
               onPressed: () => _sendMessage(suggestions[index]),
             ),
           );

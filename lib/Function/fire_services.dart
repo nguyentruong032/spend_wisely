@@ -402,16 +402,4 @@ class FirebaseService {
       return [];
     }
   }
-
-  static Future<void> deleteAllConversations(String userId) async {
-    try {
-      DatabaseReference convRef = FirebaseDatabase.instance.ref(
-        'conversations/$userId',
-      );
-      await convRef.remove();
-    } catch (e) {
-      print('Lỗi xóa toàn bộ conversations: $e');
-      rethrow; // Để handle ở caller
-    }
-  }
 }
