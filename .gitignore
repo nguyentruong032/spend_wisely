@@ -18,7 +18,7 @@ migrate_working_dir/
 *.iws
 .idea/
 *.env
-*.firebase.json
+firebase.json
 !.env.example
 
 # The .vscode folder contains launch configuration and tasks you configure in
