@@ -8,6 +8,7 @@ class GroqService {
 
   static const String _baseUrl = 'https://api.groq.com/openai/v1';
 
+  /// Hàm cũ - giữ nguyên để tương thích ngược
   static Future<String> sendMessage(
     String userMessage,
     List<ChatMessage> chatHistory,
@@ -17,10 +18,9 @@ class GroqService {
     }
 
     try {
-      // Chuyển đổi lịch sử chat thành format của Groq (OpenAI format)
       final List<Map<String, String>> messages = [];
 
-      // Thêm system message
+      // System prompt mặc định (không có dữ liệu cá nhân)
       messages.add({
         'role': 'system',
         'content': '''Bạn là một trợ lý AI chuyên về quản lý tài chính cá nhân. 
@@ -33,7 +33,7 @@ Bạn giúp người dùng:
 Hãy trả lời một cách thân thiện, dễ hiểu và bằng tiếng Việt.''',
       });
 
-      // Thêm lịch sử chat (chỉ lấy 10 tin nhắn gần nhất để tránh vượt quá token limit)
+      // Lấy 10 tin nhắn gần nhất (giữ nguyên logic cũ)
       final recentHistory = chatHistory.length > 10
           ? chatHistory.sublist(chatHistory.length - 10)
           : chatHistory;
@@ -45,62 +45,77 @@ Hãy trả lời một cách thân thiện, dễ hiểu và bằng tiếng Việ
         });
       }
 
-      // Thêm tin nhắn hiện tại
       messages.add({'role': 'user', 'content': userMessage});
 
-      // Gọi API Groq
-      final response = await http.post(
-        Uri.parse('$_baseUrl/chat/completions'),
-        headers: {
-          'Authorization': 'Bearer $_apiKey',
-          'Content-Type': 'application/json',
-        },
-        body: jsonEncode({
-          'model':
-              'llama-3.3-70b-versatile', // Hoặc 'mixtral-8x7b-32768', 'llama-3.1-8b-instant'
-          'messages': messages,
-          'temperature': 0.7,
-          'max_tokens': 1000,
-        }),
-      );
-
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        final content = data['choices'][0]['message']['content'] as String;
-        return content;
-      } else if (response.statusCode == 429) {
-        throw Exception(
-          'Groq đang bị giới hạn (rate-limit). Hãy đợi một chút rồi thử lại.',
-        );
-      } else if (response.statusCode == 401) {
-        throw Exception(
-          'Groq API key không hợp lệ. Vui lòng kiểm tra lại API key.',
-        );
-      } else {
-        final errorData = jsonDecode(response.body);
-        final errorMsg = errorData['error']?['message'] ?? response.body;
-        throw Exception('Lỗi Groq API: $errorMsg');
-      }
+      return await _callGroqApi(messages);
     } catch (e) {
-      if (e.toString().contains('rate-limit') ||
-          e.toString().contains('429') ||
-          e.toString().contains('quota')) {
-        throw Exception(
-          'Groq đang bị giới hạn (quota/rate-limit). Hãy đợi một chút rồi thử lại.',
-        );
-      }
-      throw Exception('Lỗi khi gửi tin nhắn đến Groq: ${e.toString()}');
+      _handleGroqError(e);
+      rethrow;
     }
   }
 
-  // Danh sách câu hỏi gợi ý
-  static List<String> getSuggestedQuestions() {
-    return [
-      'Làm thế nào để tiết kiệm tiền hiệu quả?',
-      'Tôi nên phân bổ ngân sách như thế nào?',
-      'Cách theo dõi chi tiêu hàng ngày?',
-      'Làm sao để tăng thu nhập?',
-      'Tôi nên đầu tư bao nhiêu phần trăm thu nhập?',
-    ];
+  /// Hàm mới - hỗ trợ system prompt động + toàn bộ lịch sử chat
+  /// Dùng khi có toggle "Bao gồm dữ liệu cá nhân"
+  static Future<String> sendMessages(List<Map<String, String>> messages) async {
+    if (_apiKey.trim().isEmpty) {
+      throw Exception('Groq API key chưa được cấu hình.');
+    }
+
+    try {
+      return await _callGroqApi(messages);
+    } catch (e) {
+      _handleGroqError(e);
+      rethrow;
+    }
+  }
+
+  /// Hàm chung gọi API Groq
+  static Future<String> _callGroqApi(List<Map<String, String>> messages) async {
+    final response = await http.post(
+      Uri.parse('$_baseUrl/chat/completions'),
+      headers: {
+        'Authorization': 'Bearer $_apiKey',
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode({
+        'model':
+            'llama-3.3-70b-versatile', // Có thể đổi thành mixtral, gemma2... tùy nhu cầu
+        'messages': messages,
+        'temperature': 0.7,
+        'max_tokens': 2048, // Tăng lên để hỗ trợ context dài + trả lời chi tiết
+        'top_p': 0.9,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      final content = data['choices'][0]['message']['content'] as String;
+      return content.trim();
+    } else {
+      final errorData = jsonDecode(response.body);
+      final errorMsg = errorData['error']?['message'] ?? response.body;
+      throw Exception(
+        'Lỗi Groq API: $errorMsg (status: ${response.statusCode})',
+      );
+    }
+  }
+
+  /// Xử lý lỗi phổ biến và ném exception thân thiện
+  static void _handleGroqError(dynamic e) {
+    String message;
+    if (e.toString().contains('429') ||
+        e.toString().contains('rate-limit') ||
+        e.toString().contains('quota')) {
+      message =
+          'Groq đang bị giới hạn tốc độ hoặc hết quota tạm thời. Vui lòng đợi 1–2 phút rồi thử lại.';
+    } else if (e.toString().contains('401')) {
+      message =
+          'API key Groq không hợp lệ. Vui lòng kiểm tra lại trong file .env';
+    } else {
+      message = 'Lỗi kết nối với Groq: ${e.toString()}';
+    }
+    // Có thể log hoặc throw tùy nhu cầu
+    print('Groq error: $message');
+    throw Exception(message);
   }
 }

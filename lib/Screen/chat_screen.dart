@@ -4,6 +4,7 @@ import 'package:spend_wisely/Function/fire_services.dart';
 import 'package:spend_wisely/DB/groq_service.dart';
 import 'package:spend_wisely/Function/models.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:spend_wisely/Function/finacial_data_service.dart';
 
 class ChatScreen extends StatefulWidget {
   final String? conversationId; // Thêm parameter để nhận ID cuộc hội thoại
@@ -27,6 +28,7 @@ class _ChatScreenState extends State<ChatScreen> {
   bool _isLoading = false;
   bool _isInitialLoading = true;
   String _userName = "Đang tải...";
+  bool _includePersonalData = false; // mặc định tắt
 
   @override
   void initState() {
@@ -130,10 +132,10 @@ class _ChatScreenState extends State<ChatScreen> {
       _isLoading = true;
     });
 
-    // Tạo object tin nhắn người dùng
+    // Tạo tin nhắn người dùng
     final userMessage = ChatMessage(
       messageId: '',
-      conversationId: _currentConversationId!, // THÊM DÒNG NÀY
+      conversationId: _currentConversationId!,
       userId: _currentUser!.uid,
       role: 'user',
       content: text.trim(),
@@ -146,23 +148,72 @@ class _ChatScreenState extends State<ChatScreen> {
     _messageController.clear();
     _scrollToBottom();
 
-    // 1. Lưu tin nhắn người dùng vào Firebase
+    // Lưu tin nhắn người dùng
     try {
       await FirebaseService.saveMessageToConversation(
         _currentConversationId!,
         userMessage,
       );
     } catch (e) {
-      print('Lỗi khi lưu tin nhắn: $e');
+      print('Lỗi lưu tin nhắn người dùng: $e');
     }
 
-    // 2. Gửi đến Groq AI và nhận phản hồi
+    // ────────────────────────────────────────────────────────────────
+    // Phần mới: Chuẩn bị context tài chính nếu toggle bật
+    String financialContext = "";
+    if (_includePersonalData) {
+      try {
+        final summary = await FinancialDataService.getUserFinancialSummary(
+          _currentUser!.uid,
+          yearsBack: 1,
+        );
+        financialContext = summary['summaryText'] as String;
+      } catch (e) {
+        financialContext =
+            "\n(Lưu ý: Không tải được dữ liệu tài chính lúc này)";
+        print('Lỗi lấy dữ liệu tài chính: $e');
+      }
+    }
+
+    // Tạo system prompt động
+    final systemPrompt =
+        """
+Bạn là trợ lý tài chính cá nhân thông minh, trung thực, trả lời bằng tiếng Việt, chi tiết và thực tế.
+${_includePersonalData ? """
+Dữ liệu tài chính thực tế 1 năm qua của người dùng (UID: ${_currentUser!.uid}):
+$financialContext
+
+→ Luôn dựa vào dữ liệu trên để đưa ra lời khuyên cụ thể, tính toán kế hoạch, cảnh báo rủi ro.
+→ Nếu dữ liệu không đủ hoặc không liên quan, hãy nói rõ và bổ sung lời khuyên chung.
+""" : """
+Không sử dụng bất kỳ dữ liệu cá nhân nào của người dùng.
+Trả lời chung chung, mang tính tham khảo, không giả định thông tin tài chính cụ thể.
+"""}
+""";
+
+    // ────────────────────────────────────────────────────────────────
+
     try {
-      String response = await GroqService.sendMessage(text.trim(), _messages);
+      // Chuẩn bị danh sách messages cho Groq
+      final messagesForGroq = <Map<String, String>>[
+        {'role': 'system', 'content': systemPrompt},
+      ];
+
+      // Thêm lịch sử chat (để Groq hiểu ngữ cảnh cuộc trò chuyện)
+      for (final msg in _messages) {
+        if (msg.role == 'user' || msg.role == 'assistant') {
+          messagesForGroq.add({'role': msg.role, 'content': msg.content});
+        }
+      }
+
+      // Gọi Groq với toàn bộ context
+      final response = await GroqService.sendMessages(
+        messagesForGroq,
+      ); // ← cần hàm mới
 
       final assistantMessage = ChatMessage(
         messageId: '',
-        conversationId: _currentConversationId!, // THÊM DÒNG NÀY
+        conversationId: _currentConversationId!,
         userId: _currentUser!.uid,
         role: 'assistant',
         content: response,
@@ -175,18 +226,14 @@ class _ChatScreenState extends State<ChatScreen> {
       });
       _scrollToBottom();
 
-      // 3. Lưu phản hồi của AI vào Firebase
       await FirebaseService.saveMessageToConversation(
         _currentConversationId!,
         assistantMessage,
       );
 
-      // Cập nhật lại danh sách cuộc hội thoại (để cập nhật title/thời gian mới nhất)
       _loadConversations();
     } catch (e) {
-      setState(() {
-        _isLoading = false;
-      });
+      setState(() => _isLoading = false);
       Fluttertoast.showToast(
         msg: "Lỗi kết nối AI: ${e.toString()}",
         toastLength: Toast.LENGTH_LONG,
@@ -558,7 +605,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   Widget _buildMessageInput() {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(12),
       color: Colors.white,
       child: Row(
         children: [
@@ -568,17 +615,48 @@ class _ChatScreenState extends State<ChatScreen> {
               decoration: InputDecoration(
                 hintText: "Hỏi AI về tài chính...",
                 filled: true,
-                fillColor: Color(0xFFF5F5F5),
+                fillColor: const Color(0xFFF5F5F5),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
                   borderSide: BorderSide.none,
                 ),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
               ),
-              onSubmitted: _sendMessage,
+              onSubmitted: (value) => _sendMessage(value),
+            ),
+          ),
+          const SizedBox(width: 8),
+          // Toggle button "Dữ liệu cá nhân"
+          Tooltip(
+            message: _includePersonalData
+                ? "Đang gửi dữ liệu thu chi 1 năm cho AI"
+                : "Bật để AI sử dụng dữ liệu tài chính cá nhân của bạn",
+            child: IconButton(
+              icon: Icon(
+                Icons.account_balance_wallet_rounded,
+                color: _includePersonalData
+                    ? Colors.blue[700]
+                    : Colors.grey[600],
+                size: 28,
+              ),
+              onPressed: () {
+                setState(() {
+                  _includePersonalData = !_includePersonalData;
+                });
+                Fluttertoast.showToast(
+                  msg: _includePersonalData
+                      ? "Đã bật dữ liệu cá nhân"
+                      : "Đã tắt dữ liệu cá nhân",
+                  gravity: ToastGravity.BOTTOM,
+                );
+              },
             ),
           ),
           IconButton(
-            icon: Icon(Icons.send, color: Color(0xFF1976D2)),
+            icon: const Icon(Icons.send, color: Color(0xFF1976D2)),
             onPressed: () => _sendMessage(_messageController.text),
           ),
         ],
