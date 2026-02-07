@@ -1,0 +1,482 @@
+{
+  "categories": {
+    "0": {
+      "category_id": "cat_sys_01",
+      "color_hex": "#FF9800",
+      "icon_code": "restaurant",
+      "is_system_default": true,
+      "name": "Ăn uống",
+      "type": "expense"
+    },
+    "1": {
+      "category_id": "cat_sys_02",
+      "color_hex": "#FFEB3B",
+      "icon_code": "electric_bolt",
+      "is_system_default": true,
+      "name": "Điện",
+      "type": "expense"
+    },
+    "2": {
+      "category_id": "cat_sys_03",
+      "color_hex": "#4CAF50",
+      "icon_code": "attach_money",
+      "is_system_default": true,
+      "name": "Lương",
+      "type": "income"
+    },
+    "-OjezeF7q_Io5Dl0glec": {
+      "color_hex": "#6b91f2",
+      "created_by_user_id": "2i1R6LtitqekbkEeOg2KiYCjy9w2",
+      "icon_code": "category",
+      "is_system_default": false,
+      "name": "Freelance",
+      "type": "income"
+    },
+    "-OjiKvFraXtlmTdyHr23": {
+      "color_hex": "#4afc6d",
+      "created_by_user_id": "2i1R6LtitqekbkEeOg2KiYCjy9w2",
+      "icon_code": "category",
+      "is_system_default": false,
+      "name": "MMO",
+      "type": "income"
+    },
+    "-OjjwASuiKc5vspAbjfp": {
+      "color_hex": "#00ff0e",
+      "created_by_user_id": "NmIM0FOmoccJW6O3B4kX1XWlGKf1",
+      "icon_code": "category",
+      "is_system_default": false,
+      "name": "MMO",
+      "type": "income"
+    }
+  },
+  "conversations": {
+    "2i1R6LtitqekbkEeOg2KiYCjy9w2": {
+      "-OjkkXp4u6898VkaVbt0": {
+        "conversation_id": "-OjkkXp4u6898VkaVbt0",
+        "created_at": 1769270816069,
+        "message_count": 4,
+        "title": "fasfas",
+        "updated_at": 1769270917080,
+        "user_id": "2i1R6LtitqekbkEeOg2KiYCjy9w2"
+      },
+      "-Ok1qzpQkb0HzwAbaJ3D": {
+        "conversation_id": "-Ok1qzpQkb0HzwAbaJ3D",
+        "created_at": 1769574497634,
+        "message_count": 2,
+        "title": "what's novel",
+        "updated_at": 1769574518853,
+        "user_id": "2i1R6LtitqekbkEeOg2KiYCjy9w2"
+      }
+    },
+    "NmIM0FOmoccJW6O3B4kX1XWlGKf1": {
+      "-OjkP3RI4l1h6RlTfkYg": {
+        "conversation_id": "-OjkP3RI4l1h6RlTfkYg",
+        "created_at": 1769264924440,
+        "message_count": 8,
+        "title": "what is xin chao in english",
+        "updated_at": 1769265312086,
+        "user_id": "NmIM0FOmoccJW6O3B4kX1XWlGKf1"
+      },
+      "-OjpXyRxq8J6rqeYp_6M": {
+        "conversation_id": "-OjpXyRxq8J6rqeYp_6M",
+        "created_at": 1769351145278,
+        "message_count": 2,
+        "title": "gia xang o Vietnam cho thay cai gi cua lam  phat",
+        "updated_at": 1769351217663,
+        "user_id": "NmIM0FOmoccJW6O3B4kX1XWlGKf1"
+      },
+      "-OjpY_4u5Sv_TlpLIyNg": {
+        "conversation_id": "-OjpY_4u5Sv_TlpLIyNg",
+        "created_at": 1769351303546,
+        "message_count": 0,
+        "title": "Cuộc hội thoại mới",
+        "updated_at": 1769351303546,
+        "user_id": "NmIM0FOmoccJW6O3B4kX1XWlGKf1"
+      }
+    }
+  },
+  "database_version": "2.0",
+  "messages": {
+    "-OjkM2fT9YErrj6kX4n3": {
+      "-OjkM4m0GQeZjZzsUi_F": {
+        "content": "Làm thế nào để tiết kiệm tiền hiệu quả?",
+        "conversation_id": "-OjkM2fT9YErrj6kX4n3",
+        "message_id": "",
+        "role": "user",
+        "timestamp": 1769264143487
+      }
+    },
+    "-OjkP3RI4l1h6RlTfkYg": {
+      "-OjkPDQqVJORdWHpXAVJ": {
+        "content": "what is xin chao in english",
+        "conversation_id": "-OjkP3RI4l1h6RlTfkYg",
+        "message_id": "",
+        "role": "user",
+        "timestamp": 1769264965363
+      },
+      "-OjkPDoxHcJvUaEUFCHT": {
+        "content": "Xin chào là một cụm từ rất phổ biến trong tiếng Việt, và nó có thể được dịch sang tiếng Anh là \"Hello\". Trong một số trường hợp, nó cũng có thể được dịch là \"Hi\" hoặc \"Greetings\", tùy thuộc vào ngữ cảnh và mức độ trang trọng.\n\nVậy, \"Xin chào\" là cách nói \"Xin chào\" trong tiếng Anh!",
+        "conversation_id": "-OjkP3RI4l1h6RlTfkYg",
+        "message_id": "",
+        "role": "assistant",
+        "timestamp": 1769264966972
+      },
+      "-OjkQEbu8TqnvVBIBvr2": {
+        "content": "giai thich don gian ve lam phat",
+        "conversation_id": "-OjkP3RI4l1h6RlTfkYg",
+        "message_id": "",
+        "role": "user",
+        "timestamp": 1769265232377
+      },
+      "-OjkQFBhC36Y9u-l4jRo": {
+        "content": "\"Làm phát\" là một cụm từ tiếng Việt, và nó có thể được giải thích một cách đơn giản như sau:\n\n\"Làm phát\" có nghĩa là làm việc chăm chỉ, cố gắng và nỗ lực để đạt được mục tiêu hoặc hoàn thành một nhiệm vụ. Nó cũng có thể ám chỉ việc làm việc với tinh thần sáng tạo, đổi mới và tìm ra giải pháp mới để giải quyết vấn đề.\n\nVí dụ, nếu bạn đang cố gắng học tập để đạt được điểm cao, bạn có thể \"làm phát\" bằng cách dành nhiều thời gian để đọc sách, làm bài tập và tham gia các hoạt động học tập khác.\n\nTóm lại, \"làm phát\" là một cách nói về việc làm việc chăm chỉ, sáng tạo và nỗ lực để đạt được thành công.",
+        "conversation_id": "-OjkP3RI4l1h6RlTfkYg",
+        "message_id": "",
+        "role": "assistant",
+        "timestamp": 1769265234732
+      },
+      "-OjkQMseNcKEPo1CKQUt": {
+        "content": "lamj phats cow",
+        "conversation_id": "-OjkP3RI4l1h6RlTfkYg",
+        "message_id": "",
+        "role": "user",
+        "timestamp": 1769265266217
+      },
+      "-OjkQNGdDiCrNJXxsRiR": {
+        "content": "Tôi nghĩ có thể bạn đang muốn nói về \"Làm giàu\" hoặc \"Làm phát\" liên quan đến việc chăn nuôi bò (cow).\n\nNếu vậy, \"Làm giàu\" hoặc \"Làm phát\" trong lĩnh vực chăn nuôi bò có thể ám chỉ việc áp dụng các phương pháp chăn nuôi hiện đại, đầu tư vào công nghệ và kỹ thuật để tăng năng suất và chất lượng của bò, từ đó tăng lợi nhuận và làm giàu.\n\nVí dụ, bạn có thể \"làm giàu\" bằng cách:\n\n* Đầu tư vào giống bò chất lượng cao\n* Áp dụng các phương pháp chăn nuôi hiện đại như sử dụng máy móc tự động hóa, quản lý thức ăn và nước uống hiệu quả\n* Tạo ra các sản phẩm giá trị gia tăng như sữa, thịt bò hữu cơ hoặc bò giống\n* Xây dựng một mô hình chăn nuôi bò bền vững và thân thiện với môi trường\n\nTóm lại, \"làm giàu\" trong lĩnh vực chăn nuôi bò là việc áp dụng các phương pháp và công nghệ hiện đại để tăng lợi nhuận và làm giàu.",
+        "conversation_id": "-OjkP3RI4l1h6RlTfkYg",
+        "message_id": "",
+        "role": "assistant",
+        "timestamp": 1769265267816
+      },
+      "-OjkQXMUoeo0fMbvX3Fi": {
+        "content": "what's inflation explain it in vietnamese",
+        "conversation_id": "-OjkP3RI4l1h6RlTfkYg",
+        "message_id": "",
+        "role": "user",
+        "timestamp": 1769265309150
+      },
+      "-OjkQXvdo_Fz3hos6NJz": {
+        "content": "Lạm phát (inflation) là một hiện tượng kinh tế trong đó giá cả của hàng hóa và dịch vụ tăng lên theo thời gian. Khi lạm phát xảy ra, đồng tiền của một quốc gia mất giá trị, và người dân phải trả nhiều tiền hơn để mua cùng một lượng hàng hóa và dịch vụ như trước đây.\n\nVí dụ, nếu năm ngoái một chiếc bánh mì costs 10.000 đồng, nhưng năm nay chiếc bánh mì đó costs 12.000 đồng, thì đó là một ví dụ về lạm phát. Giá cả của bánh mì đã tăng lên 20% trong một năm.\n\nLạm phát có thể xảy ra do nhiều nguyên nhân, bao gồm:\n\n* Tăng trưởng kinh tế quá nhanh: Khi kinh tế tăng trưởng quá nhanh, nhu cầu về hàng hóa và dịch vụ tăng lên, và giá cả cũng tăng theo.\n* Tăng giá nguyên liệu: Khi giá nguyên liệu tăng lên, giá cả của hàng hóa và dịch vụ cũng tăng theo.\n* Tăng lương: Khi lương tăng lên, người dân có nhiều tiền hơn để chi tiêu, và giá cả cũng tăng theo.\n* In tiền: Khi chính phủ in nhiều tiền hơn, giá trị của đồng tiền giảm xuống, và giá cả tăng lên.\n\nLạm phát có thể có cả tác động tích cực và tiêu cực. Tác động tích cực là nó có thể kích thích kinh tế tăng trưởng, nhưng tác động tiêu cực là nó có thể làm giảm giá trị của đồng tiền và giảm sức mua của người dân.\n\nĐể kiểm soát lạm phát, chính phủ và ngân hàng trung ương thường sử dụng các công cụ như:\n\n* Tăng lãi suất: Để giảm thiểu việc vay tiền và giảm nhu cầu về hàng hóa và dịch vụ.\n* Giảm in tiền: Để giảm lượng tiền trong lưu thông và giảm giá cả.\n* Áp dụng chính sách tài khóa: Để giảm thiểu chi tiêu của chính phủ và giảm nhu cầu về hàng hóa và dịch vụ.\n\nTóm lại, lạm phát là một hiện tượng kinh tế trong đó giá cả của hàng hóa và dịch vụ tăng lên theo thời gian, và nó có thể xảy ra do nhiều nguyên nhân khác nhau. Kiểm soát lạm phát là một phần quan trọng của chính sách kinh tế để đảm bảo sự ổn định và tăng trưởng của nền kinh tế.",
+        "conversation_id": "-OjkP3RI4l1h6RlTfkYg",
+        "message_id": "",
+        "role": "assistant",
+        "timestamp": 1769265311464
+      }
+    },
+    "-OjkkXp4u6898VkaVbt0": {
+      "-OjkkoXIf5oviA-Ciyiw": {
+        "content": "fasfas",
+        "conversation_id": "-OjkkXp4u6898VkaVbt0",
+        "message_id": "",
+        "role": "user",
+        "timestamp": 1769270888593
+      },
+      "-Ojkkoolx4AWgr_XUAP_": {
+        "content": "Có vẻ như bạn đang cần giúp đỡ về một vấn đề tài chính cá nhân, nhưng tôi chưa rõ cụ thể vấn đề của bạn là gì. Bạn có thể cho tôi biết thêm thông tin về vấn đề bạn đang gặp phải hoặc câu hỏi bạn muốn hỏi không? Tôi ở đây để giúp đỡ bạn!",
+        "conversation_id": "-OjkkXp4u6898VkaVbt0",
+        "message_id": "",
+        "role": "assistant",
+        "timestamp": 1769270889776
+      },
+      "-OjkkupdOsKeybW-XU2C": {
+        "content": "what's inflation explain it in vietnamese",
+        "conversation_id": "-OjkkXp4u6898VkaVbt0",
+        "message_id": "",
+        "role": "user",
+        "timestamp": 1769270914408
+      },
+      "-OjkkvKYpRi9oZLv-V13": {
+        "content": "Lạm phát (inflation) là một hiện tượng kinh tế trong đó giá cả của hàng hóa và dịch vụ tăng lên theo thời gian. Điều này có nghĩa là số tiền bạn có trong tay sẽ có giá trị thấp hơn so với trước đây, vì bạn cần nhiều tiền hơn để mua cùng một lượng hàng hóa và dịch vụ.\n\nVí dụ, giả sử vào năm ngoái, bạn có thể mua 10 kg gạo với 100.000 đồng. Nhưng vào năm nay, giá gạo tăng lên, và bạn cần 120.000 đồng để mua cùng 10 kg gạo. Điều này có nghĩa là giá gạo đã tăng 20% so với năm trước, và bạn cần nhiều tiền hơn để mua cùng một lượng gạo.\n\nLạm phát có thể xảy ra do nhiều nguyên nhân, bao gồm:\n\n* Tăng trưởng kinh tế quá nhanh\n* Tăng giá nguyên liệu thô\n* Tăng lương và chi phí sản xuất\n* Cung tiền quá nhiều\n\nLạm phát có thể ảnh hưởng đến cuộc sống của chúng ta theo nhiều cách, bao gồm:\n\n* Giảm giá trị của tiền tiết kiệm\n* Tăng chi phí sống\n* Ảnh hưởng đến khả năng mua hàng hóa và dịch vụ\n\nTuy nhiên, lạm phát cũng có thể có một số lợi ích, chẳng hạn như:\n\n* Tăng trưởng kinh tế\n* Tạo việc làm\n* Khuyến khích đầu tư\n\nĐể đối phó với lạm phát, chúng ta có thể thực hiện một số biện pháp, bao gồm:\n\n* Tiết kiệm tiền\n* Đầu tư vào các tài sản có giá trị tăng theo thời gian\n* Cân nhắc chi tiêu và ngân sách\n* Theo dõi và cập nhật thông tin về kinh tế và tài chính.",
+        "conversation_id": "-OjkkXp4u6898VkaVbt0",
+        "message_id": "",
+        "role": "assistant",
+        "timestamp": 1769270916450
+      }
+    },
+    "-OjpV_bvsTkpqURcv0o_": {
+      "-OjpVdnpWJGfT-7f4QPP": {
+        "content": "what's inflation",
+        "conversation_id": "-OjpV_bvsTkpqURcv0o_",
+        "message_id": "",
+        "role": "user",
+        "timestamp": 1769350536434
+      }
+    },
+    "-OjpWm4byf5FknkCm5A_": {
+      "-OjpWoM6O8msSxFejxqE": {
+        "content": "what's inflation",
+        "conversation_id": "-OjpWm4byf5FknkCm5A_",
+        "message_id": "",
+        "role": "user",
+        "timestamp": 1769350841796
+      },
+      "-OjpWoxMf_uG9DwcWUn3": {
+        "content": "Lạm phát (inflation) là tình trạng giá cả hàng hóa và dịch vụ tăng lên theo thời gian. Khi lạm phát xảy ra, số tiền bạn có sẽ mua được ít hàng hóa và dịch vụ hơn so với trước đây.\n\nVí dụ, nếu trước đây bạn có thể mua 10 quả trứng với 10.000 đồng, nhưng sau một thời gian, giá trứng tăng lên và bạn chỉ có thể mua 8 quả trứng với cùng số tiền 10.000 đồng, thì đó là tình trạng lạm phát.\n\nLạm phát có thể xảy ra do nhiều nguyên nhân, bao gồm:\n\n* Tăng cầu hàng hóa và dịch vụ\n* Giảm cung hàng hóa và dịch vụ\n* Tăng chi phí sản xuất\n* Tăng lương và thu nhập\n* Chính sách tiền tệ và tài khóa của chính phủ\n\nLạm phát có thể ảnh hưởng đến cuộc sống của chúng ta theo nhiều cách, bao gồm:\n\n* Giảm giá trị của tiền tệ\n* Tăng chi phí sinh hoạt\n* Ảnh hưởng đến tiết kiệm và đầu tư\n* Thay đổi lãi suất và chính sách tiền tệ\n\nVì vậy, hiểu về lạm phát và cách quản lý tài chính cá nhân trong tình trạng lạm phát là rất quan trọng để bảo vệ tài sản và đảm bảo tương lai tài chính của bạn.",
+        "conversation_id": "-OjpWm4byf5FknkCm5A_",
+        "message_id": "",
+        "role": "assistant",
+        "timestamp": 1769350844246
+      }
+    },
+    "-OjpXyRxq8J6rqeYp_6M": {
+      "-OjpYEFgALQHZLIWzxC5": {
+        "content": "gia xang o Vietnam cho thay cai gi cua lam  phat",
+        "conversation_id": "-OjpXyRxq8J6rqeYp_6M",
+        "message_id": "",
+        "role": "user",
+        "timestamp": 1769351214123
+      },
+      "-OjpYExYQeGVAILvEy40": {
+        "content": "Giá xăng ở Việt Nam có thể ảnh hưởng đến nhiều mặt của nền kinh tế và cuộc sống hàng ngày. Dưới đây là một số cách mà giá xăng có thể ảnh hưởng:\n\n1. **Tăng chi phí vận chuyển**: Khi giá xăng tăng, chi phí vận chuyển hàng hóa và người cũng tăng theo. Điều này có thể dẫn đến tăng giá hàng hóa và dịch vụ, đặc biệt là những mặt hàng cần vận chuyển từ nơi khác về.\n2. **Tác động đến ngành giao thông**: Giá xăng tăng có thể khiến các công ty vận tải, taxi và các dịch vụ giao hàng phải tăng giá dịch vụ để bù đắp cho chi phí xăng tăng.\n3. **Ảnh hưởng đến thu nhập**: Nếu giá xăng tăng, người dân có thể phải chi tiêu nhiều hơn cho xăng, dẫn đến giảm thu nhập khả dụng cho các khoản chi tiêu khác.\n4. **Tăng lạm phát**: Giá xăng tăng có thể góp phần vào lạm phát, vì giá hàng hóa và dịch vụ tăng theo chi phí sản xuất và vận chuyển.\n5. **Tác động đến du lịch và giải trí**: Giá xăng tăng có thể khiến người dân phải cắt giảm chi tiêu cho các hoạt động giải trí và du lịch, vì chi phí di chuyển tăng cao.\n6. **Ảnh hưởng đến kinh doanh**: Giá xăng tăng có thể ảnh hưởng đến lợi nhuận của các doanh nghiệp, đặc biệt là những doanh nghiệp có hoạt động vận tải hoặc sản xuất hàng hóa.\n\nĐể đối phó với tình hình giá xăng tăng, bạn có thể xem xét các biện pháp sau:\n\n* **Tối ưu hóa chi tiêu**: Cắt giảm chi tiêu không cần thiết và phân bổ lại ngân sách để đối phó với chi phí xăng tăng.\n* **Sử dụng phương tiện tiết kiệm xăng**: Xem xét sử dụng phương tiện tiết kiệm xăng hoặc tìm kiếm các giải pháp thay thế như xe điện hoặc phương tiện công cộng.\n* **Lập kế hoạch tài chính**: Lập kế hoạch tài chính dài hạn để đối phó với các biến động giá xăng và đảm bảo sự ổn định tài chính.\n\nHy vọng những thông tin trên sẽ giúp bạn hiểu rõ hơn về tác động của giá xăng đến cuộc sống hàng ngày và có thể đưa ra quyết định sáng suốt về tài chính.",
+        "conversation_id": "-OjpXyRxq8J6rqeYp_6M",
+        "message_id": "",
+        "role": "assistant",
+        "timestamp": 1769351216994
+      }
+    },
+    "-Ok1qzpQkb0HzwAbaJ3D": {
+      "-Ok1r3MzR0f1SYO_MiNU": {
+        "content": "what's novel",
+        "conversation_id": "-Ok1qzpQkb0HzwAbaJ3D",
+        "message_id": "",
+        "role": "user",
+        "timestamp": 1769574516221
+      },
+      "-Ok1r3qNFrhJ7WF56byx": {
+        "content": "Tôi nghĩ bạn đang hỏi \"what's new\" (có gì mới) nhưng viết sai chính tả. \n\nNếu bạn đang hỏi về điều gì mới mẻ trong lĩnh vực quản lý tài chính cá nhân, tôi có thể chia sẻ một số thông tin thú vị:\n\n* Công nghệ tài chính (fintech) đang phát triển mạnh mẽ, mang lại nhiều tiện ích và giải pháp tài chính mới cho người dùng.\n* Đầu tư vào các quỹ đầu tư và chứng khoán đang trở nên phổ biến hơn.\n* Quản lý tài chính cá nhân thông minh với sự giúp đỡ của các ứng dụng và công cụ trực tuyến.\n\nNếu bạn có câu hỏi cụ thể về tài chính cá nhân, tôi sẵn sàng giúp đỡ!",
+        "conversation_id": "-Ok1qzpQkb0HzwAbaJ3D",
+        "message_id": "",
+        "role": "assistant",
+        "timestamp": 1769574518167
+      }
+    },
+    "conv_saving_01": {
+      "-OjenptCcyNFnsbml8gJ": {
+        "content": "Làm thế nào để tiết kiệm tiền hiệu quả?",
+        "message_id": "-OjenptCcyNFnsbml8gJ",
+        "role": "user",
+        "timestamp": 1769171017290
+      },
+      "-OjenqXwQoQoSUm8Do8K": {
+        "content": "Để tiết kiệm tiền hiệu quả, bạn có thể thực hiện các bước sau:\n\n1. **Xác định mục tiêu tiết kiệm**...\n(Đã rút gọn cho ngắn, giữ nguyên nội dung gốc)",
+        "message_id": "-OjenqXwQoQoSUm8Do8K",
+        "role": "assistant",
+        "timestamp": 1769171019963
+      },
+      "-OjfKYrXwO17DHoac5lw": {
+        "content": "Làm thế nào để tiết kiệm tiền hiệu quả?",
+        "message_id": "-OjfKYrXwO17DHoac5lw",
+        "role": "user",
+        "timestamp": 1769179856352
+      },
+      "-OjfKZWvUzTVduEPLS2x": {
+        "content": "Để tiết kiệm tiền hiệu quả, bạn có thể thực hiện các bước sau:\n\n1. **Đặt mục tiêu tiết kiệm**...",
+        "message_id": "-OjfKZWvUzTVduEPLS2x",
+        "role": "assistant",
+        "timestamp": 1769179859066
+      },
+      "-Oji6iYi4sLA65OAWd-J": {
+        "content": "Làm thế nào để tiết kiệm tiền hiệu quả?",
+        "message_id": "-Oji6iYi4sLA65OAWd-J",
+        "role": "user",
+        "timestamp": 1769226561772
+      },
+      "-Oji6jKlUI-Pk5IA0Dkw": {
+        "content": "Tiết kiệm tiền là một trong những thói quen tốt nhất...",
+        "message_id": "-Oji6jKlUI-Pk5IA0Dkw",
+        "role": "assistant",
+        "timestamp": 1769226564975
+      }
+    },
+    "conv_support_01": {
+      "msg_user1_01": {
+        "content": "Xem báo cáo ở đâu?",
+        "message_id": "msg_user1_01",
+        "role": "user",
+        "timestamp": 1716375600000
+      },
+      "msg_user1_02": {
+        "content": "Chào user1, để xem báo cáo tháng, bạn hãy nhấn vào biểu tượng đồ thị ở thanh menu dưới cùng nhé.",
+        "message_id": "msg_user1_02",
+        "role": "assistant",
+        "timestamp": 1716375660000
+      },
+      "msg_user1_03": {
+        "content": "Thông báo: Bạn đã sử dụng 15% ngân sách cho mục 'Ăn uống'. Mọi thứ vẫn đang trong tầm kiểm soát.",
+        "message_id": "msg_user1_03",
+        "role": "assistant",
+        "timestamp": 1716386400000
+      }
+    },
+    "conv_transaction_01": {
+      "msg_sys_01": {
+        "content": "Làm sao để xóa một giao dịch sai?",
+        "message_id": "msg_sys_01",
+        "role": "user",
+        "timestamp": 1716372000000
+      },
+      "msg_sys_02": {
+        "content": "Để xóa giao dịch, bạn hãy vào màn hình 'Chi tiêu', vuốt sang trái ở giao dịch cần xóa và nhấn biểu tượng thùng rác.",
+        "message_id": "msg_sys_02",
+        "role": "assistant",
+        "timestamp": 1716372060000
+      },
+      "msg_sys_03": {
+        "content": "Cảnh báo: Bạn đã chi tiêu 40% ngân sách tháng cho việc 'Ăn uống'. Hãy cân nhắc nấu ăn tại nhà.",
+        "message_id": "msg_sys_03",
+        "role": "assistant",
+        "timestamp": 1715760000000
+      }
+    }
+  },
+  "transactions": {
+    "-OjZFbZ1sWYfKx_Ojvj0": {
+      "amount": 1000000,
+      "category_id": "cat_usr_user1_01",
+      "created_at": 1769061120247,
+      "date": 1768410000000,
+      "note": "",
+      "type": "expense",
+      "user_id": "2i1R6LtitqekbkEeOg2KiYCjy9w2"
+    },
+    "-OjZFh2hhYvJY1jRmVPC": {
+      "amount": 5000000,
+      "category_id": "cat_sys_03",
+      "created_at": 1769061142764,
+      "date": 1769061142764,
+      "note": "",
+      "type": "income",
+      "user_id": "2i1R6LtitqekbkEeOg2KiYCjy9w2"
+    },
+    "-OjZiYgJM6bVjvCQA-hM": {
+      "amount": 1000000000,
+      "category_id": "cat_sys_03",
+      "created_at": 1769068968724,
+      "date": 1769068968724,
+      "note": "Freelance T1 2026",
+      "type": "income",
+      "user_id": "2i1R6LtitqekbkEeOg2KiYCjy9w2"
+    },
+    "-OjZj7woGdDTN4pywHoz": {
+      "amount": 1000000000,
+      "category_id": "cat_sys_02",
+      "created_at": 1769069121332,
+      "date": 1769187600000,
+      "note": "T1 2026",
+      "type": "expense",
+      "user_id": "2i1R6LtitqekbkEeOg2KiYCjy9w2"
+    },
+    "-Ojf2ceP9HUpL6uygEV5": {
+      "amount": 500000000,
+      "category_id": "-Ojf2OfFCHQExj2nz8N9",
+      "created_at": 1769175157402,
+      "date": 1694278800000,
+      "is_viewed": false,
+      "note": "House T9 2023",
+      "type": "expense",
+      "user_id": "2i1R6LtitqekbkEeOg2KiYCjy9w2"
+    },
+    "-OjiFOHQPk3b7qXzMr83": {
+      "amount": 500000,
+      "category_id": "0",
+      "created_at": 1769228833945,
+      "date": 1768410000000,
+      "is_viewed": false,
+      "note": "Hadilao 15/1/2026",
+      "type": "expense",
+      "user_id": "NmIM0FOmoccJW6O3B4kX1XWlGKf1"
+    },
+    "-OjiKf97yzhcXlm0gmkS": {
+      "amount": 574000,
+      "category_id": "1",
+      "created_at": 1769230217863,
+      "date": 1769187600000,
+      "is_viewed": false,
+      "note": "24/1/2026-paid",
+      "type": "expense",
+      "user_id": "2i1R6LtitqekbkEeOg2KiYCjy9w2"
+    },
+    "-OjiL22bpsvvBXH0zdaS": {
+      "amount": 600000,
+      "category_id": "-OjiKvFraXtlmTdyHr23",
+      "created_at": 1769230315751,
+      "date": 1769230315751,
+      "is_viewed": false,
+      "note": "Ban quan ao 24/01/2026",
+      "type": "income",
+      "user_id": "2i1R6LtitqekbkEeOg2KiYCjy9w2"
+    },
+    "-OjigPK1oEs0tjbdPKTM": {
+      "amount": 5000000,
+      "category_id": "0",
+      "created_at": 1769236178233,
+      "date": 1769236178233,
+      "is_viewed": false,
+      "note": "tien an T1",
+      "type": "expense",
+      "user_id": "NmIM0FOmoccJW6O3B4kX1XWlGKf1"
+    },
+    "-OjjwFIX1t_X8O-6eLyy": {
+      "amount": 90000000,
+      "category_id": "-OjjwASuiKc5vspAbjfp",
+      "created_at": 1769257108706,
+      "date": 1769257108706,
+      "is_viewed": false,
+      "note": "T1/2026",
+      "type": "income",
+      "user_id": "NmIM0FOmoccJW6O3B4kX1XWlGKf1"
+    },
+    "-OjjxgBr2sGd3b3OMWHd": {
+      "amount": 70000000,
+      "category_id": "0",
+      "created_at": 1769257485110,
+      "date": 1769257485110,
+      "is_viewed": false,
+      "note": "BirthdayParty",
+      "type": "expense",
+      "user_id": "NmIM0FOmoccJW6O3B4kX1XWlGKf1"
+    },
+    "-Ojkz5WzssVxL_WeBqX3": {
+      "amount": 70000,
+      "category_id": "-Ojkz1gMrDuNPNDhR0SR",
+      "created_at": 1769274632318,
+      "date": 1769274632318,
+      "is_viewed": false,
+      "note": "test01",
+      "type": "expense",
+      "user_id": "2i1R6LtitqekbkEeOg2KiYCjy9w2"
+    },
+    "-Ojl5sCWdYMw7tb1rLWh": {
+      "amount": 20,
+      "category_id": "-Ojl5pNxISPzw2EFw3l1",
+      "created_at": 1769276670816,
+      "date": 1769276670816,
+      "is_viewed": false,
+      "note": "thu 02",
+      "type": "expense",
+      "user_id": "2i1R6LtitqekbkEeOg2KiYCjy9w2"
+    }
+  },
+  "users": {
+    "2i1R6LtitqekbkEeOg2KiYCjy9w2": {
+      "avatar_url": "https://firebasestorage.../avatar_user1.jpg",
+      "createdAt": 1769009050253,
+      "email": "user1@gmail.com",
+      "preferences": {
+        "currency": "VND",
+        "language": "vi",
+        "monthly_budget_limit": 10000000,
+        "theme_mode": "dark"
+      },
+      "uid": "2i1R6LtitqekbkEeOg2KiYCjy9w2",
+      "username": "user1"
+    },
+    "NmIM0FOmoccJW6O3B4kX1XWlGKf1": {
+      "createdAt": 1769228275007,
+      "email": "user2@gmail.com",
+      "uid": "NmIM0FOmoccJW6O3B4kX1XWlGKf1",
+      "username": "user2"
+    }
+  }
+}
