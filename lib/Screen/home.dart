@@ -293,9 +293,9 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text(
-          "Số dư hiện có: ${_totalBalance.toStringAsFixed(0)} đ",
-          style: const TextStyle(color: Colors.black54, fontSize: 13),
+        title: const Text(
+          "Trang chủ",
+          style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
         ),
         actions: [
           IconButton(
@@ -350,7 +350,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                             Text(
-                              _email ?? "Không có email", // ← sửa
+                              "Số tiền thật: ${_totalBalance.toStringAsFixed(0)} đ",
                               style: const TextStyle(
                                 color: Colors.grey,
                                 fontSize: 12,

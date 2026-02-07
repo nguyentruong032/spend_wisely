@@ -151,6 +151,7 @@ class Transaction {
   });
 
   factory Transaction.fromMap(Map<dynamic, dynamic> map, String transactionId) {
+    String safeString(dynamic value) => value?.toString() ?? '';
     int parseDate(dynamic dateValue) {
       if (dateValue is int) {
         return dateValue;
@@ -185,11 +186,12 @@ class Transaction {
 
     return Transaction(
       transactionId: transactionId,
-      userId: map['user_id'] as String,
-      categoryId: map['category_id'] as String,
-      type: map['type'] as String,
-      amount: (map['amount'] as num).toDouble(),
-      note: map['note'] as String? ?? '',
+      // Thay vì 'as String', dùng .toString() để chấp nhận cả int và string
+      userId: safeString(map['user_id']),
+      categoryId: safeString(map['category_id']),
+      type: safeString(map['type']),
+      amount: (map['amount'] as num?)?.toDouble() ?? 0.0,
+      note: safeString(map['note']),
       date: parseDate(map['date']),
       createdAt: parseCreatedAt(map['created_at'] ?? map['createdAt']),
       isViewed: map['is_viewed'] ?? false,
