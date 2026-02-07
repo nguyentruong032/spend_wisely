@@ -403,17 +403,15 @@ class FirebaseService {
     }
   }
 
-  static Future<void> deleteChatHistory(String userId) async {
-    DatabaseReference chatRef = FirebaseDatabase.instance.ref('chats');
-    Query query = chatRef.orderByChild('user_id').equalTo(userId);
-    DataSnapshot snapshot = await query.get();
-    if (snapshot.exists && snapshot.value != null) {
-      final dynamic value = snapshot.value;
-      if (value is Map<dynamic, dynamic>) {
-        for (var key in value.keys) {
-          await chatRef.child(key).remove();
-        }
-      }
+  static Future<void> deleteAllConversations(String userId) async {
+    try {
+      DatabaseReference convRef = FirebaseDatabase.instance.ref(
+        'conversations/$userId',
+      );
+      await convRef.remove();
+    } catch (e) {
+      print('Lỗi xóa toàn bộ conversations: $e');
+      rethrow; // Để handle ở caller
     }
   }
 }

@@ -19,7 +19,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   User? _currentUser;
-  UserData? _userData;
+  String? _email;
+  String? _username;
   double _totalBalance = 0.0;
   double _totalIncome = 0.0;
   double _totalExpense = 0.0;
@@ -38,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _currentUser = FirebaseAuth.instance.currentUser;
     if (_currentUser != null) {
-      _fetchUserData();
+      _loadUserData();
       _fetchTransactions();
     }
   }
@@ -49,12 +50,20 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
-  Future<void> _fetchUserData() async {
+  // ── Hàm mới (copy y hệt logic từ acc_management.dart) ──
+  Future<void> _loadUserData() async {
     if (_currentUser != null) {
-      UserData? data = await FirebaseService.getUserData(_currentUser!.uid);
       setState(() {
-        _userData = data;
+        _email = _currentUser!.email;
       });
+
+      String name = await FirebaseService.getUserName(_currentUser!.uid);
+
+      if (mounted) {
+        setState(() {
+          _username = name;
+        });
+      }
     }
   }
 
@@ -324,10 +333,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           "Ví của tôi",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        Text(
-                          "Xem tất cả",
-                          style: TextStyle(color: Colors.blue, fontSize: 12),
-                        ),
                       ],
                     ),
                     const Divider(),
@@ -339,13 +344,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              _userData?.username ?? "Người dùng",
+                              _username ?? "Không có tên", // ← sửa
                               style: const TextStyle(
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                             Text(
-                              _userData?.email ?? "Email của bạn",
+                              _email ?? "Không có email", // ← sửa
                               style: const TextStyle(
                                 color: Colors.grey,
                                 fontSize: 12,
