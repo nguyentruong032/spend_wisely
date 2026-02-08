@@ -46,7 +46,9 @@ class FinancialDataService {
         final amount = (tx['amount'] as num?)?.toDouble() ?? 0.0;
         final dateMs = tx['date'] as int? ?? 0;
         final type = tx['type'] as String?;
-        final categoryId = tx['category_id'] as String? ?? 'unknown';
+        final categoryId =
+            tx['category_id']?.toString() ??
+            'unknown'; // Chuyển bất kỳ kiểu gì thành String
         final note = tx['note'] as String? ?? '';
 
         if (dateMs < startTimestamp) return;

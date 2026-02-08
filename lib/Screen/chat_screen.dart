@@ -45,8 +45,6 @@ class _ChatScreenState extends State<ChatScreen> {
     } else {
       _createNewConversation();
     }
-
-    _loadConversations();
   }
 
   Future<void> _loadUserName() async {
@@ -55,21 +53,6 @@ class _ChatScreenState extends State<ChatScreen> {
     setState(() {
       _userName = name;
     });
-  }
-
-  // Tải danh sách tất cả cuộc hội thoại của user
-  Future<void> _loadConversations() async {
-    if (_currentUser == null) return;
-    try {
-      List<Conversation> conversations = await FirebaseService.getConversations(
-        _currentUser!.uid,
-      );
-      setState(() {
-        _conversations = conversations;
-      });
-    } catch (e) {
-      print('Lỗi load danh sách conversations: $e');
-    }
   }
 
   // Tạo một cuộc hội thoại mới khi vào màn hình mà không có ID
@@ -167,11 +150,12 @@ class _ChatScreenState extends State<ChatScreen> {
           _currentUser!.uid,
           yearsBack: 1,
         );
-        financialContext = summary['summaryText'] as String;
-      } catch (e) {
+        final rawSummaryText = summary['summaryText'];
         financialContext =
-            "\n(Lưu ý: Không tải được dữ liệu tài chính lúc này)";
-        print('Lỗi lấy dữ liệu tài chính: $e');
+            rawSummaryText?.toString() ??
+            "\n(Lưu ý: Không có dữ liệu tài chính hợp lệ hoặc summaryText rỗng)";
+      } catch (e, stack) {
+        financialContext = "\n(Lỗi khi lấy dữ liệu tài chính: $e)";
       }
     }
 
@@ -230,8 +214,6 @@ Trả lời chung chung, mang tính tham khảo, không giả định thông tin
         _currentConversationId!,
         assistantMessage,
       );
-
-      _loadConversations();
     } catch (e) {
       setState(() => _isLoading = false);
       Fluttertoast.showToast(
@@ -439,12 +421,6 @@ Trả lời chung chung, mang tính tham khảo, không giả định thông tin
             fontWeight: FontWeight.bold,
           ),
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.refresh, color: Colors.black54),
-            onPressed: _loadConversations, // Làm mới danh sách
-          ),
-        ],
       ),
       body: Column(
         children: [
@@ -492,7 +468,6 @@ Trả lời chung chung, mang tính tham khảo, không giả định thông tin
               if (_currentConversationId == conv.conversationId) {
                 _createNewConversation();
               }
-              _loadConversations();
             },
             child: Text("Xóa", style: TextStyle(color: Colors.red)),
           ),
